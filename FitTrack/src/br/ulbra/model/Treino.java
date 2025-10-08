@@ -1,0 +1,73 @@
+package br.ulbra.model;
+
+import java.util.Date;
+
+public class Treino {
+
+    private int idTreino;
+    private String tipo;
+    private int duracao;
+    private int calorias;
+    private Date dataTreino;
+    private int idUsuario;
+
+    public Treino() {
+    }
+
+    public Treino(int idTreino, String tipo, int duracao, int calorias, Date dataTreino, int idUsuario) {
+        this.idTreino = idTreino;
+        this.tipo = tipo;
+        this.duracao = duracao;
+        this.calorias = calorias;
+        this.dataTreino = dataTreino;
+        this.idUsuario = idUsuario;
+    }
+
+    public int getIdTreino() {
+        return idTreino;
+    }
+
+    public void setIdTreino(int idTreino) {
+        this.idTreino = idTreino;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public int getCalorias() {
+        return calorias;
+    }
+
+    public void setCalorias(int calorias) {
+        this.calorias = calorias;
+    }
+
+    public Date getDataTreino() {
+        return dataTreino;
+    }
+
+    public void setDataTreino(Date dataTreino) {
+        this.dataTreino = dataTreino;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+}
