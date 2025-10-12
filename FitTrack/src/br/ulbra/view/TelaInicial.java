@@ -5,19 +5,27 @@
  */
 package br.ulbra.view;
 
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author aluno.saolucas
  */
 public class TelaInicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaInicial
-     */
+     
+    
+    
+    
     public TelaInicial() {
         initComponents();
+   setLocationRelativeTo(null); // Centraliza a tela
+        setTitle("FitTrack - Sistema de Treinos");
     }
 
+    
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +46,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mnPerfil = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        mnSobre = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -70,9 +79,19 @@ public class TelaInicial extends javax.swing.JFrame {
         mnCadastros.setText("Cadastros");
 
         mnTreino.setText("Treino");
+        mnTreino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnTreinoActionPerformed(evt);
+            }
+        });
         mnCadastros.add(mnTreino);
 
         mnUsuario.setText("Usuario");
+        mnUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnUsuarioActionPerformed(evt);
+            }
+        });
         mnCadastros.add(mnUsuario);
 
         jMenuBar1.add(mnCadastros);
@@ -80,11 +99,25 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu2.setText("Listagem");
 
         mnPerfil.setText("Perfil");
+        mnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnPerfilActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnPerfil);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Sobre");
+
+        mnSobre.setText("Sobre");
+        mnSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSobreActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mnSobre);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -103,11 +136,36 @@ public class TelaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mnTreinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTreinoActionPerformed
+        new TreinoView().setVisible(true);
+    }//GEN-LAST:event_mnTreinoActionPerformed
+
+    private void mnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPerfilActionPerformed
+          new ListagemView().setVisible(true);
+    }//GEN-LAST:event_mnPerfilActionPerformed
+
+    private void mnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUsuarioActionPerformed
+         new UsuarioView().setVisible(true);
+    }//GEN-LAST:event_mnUsuarioActionPerformed
+
+    private void mnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSobreActionPerformed
+         JOptionPane.showMessageDialog(this,
+                "FitTrack - Sistema de Gerenciamento de Treinos\n"
+              + "Versão 1.0\n"
+              + "Desenvolvido por Pedro Flores,Gabriel Sandes,Gabriel Bandasz,Lucas Matheus,Joaquim Guedes\n"
+              + "© 2025 - Todos os direitos reservados.",
+                "Sobre o Sistema",
+                JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_mnSobreActionPerformed
+ 
+  
+    
+  
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+         java.awt.EventQueue.invokeLater(() -> new TelaInicial().setVisible(true));
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -148,6 +206,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JMenu mnCadastros;
     private javax.swing.JMenuItem mnPerfil;
+    private javax.swing.JMenuItem mnSobre;
     private javax.swing.JMenuItem mnTreino;
     private javax.swing.JMenuItem mnUsuario;
     // End of variables declaration//GEN-END:variables
