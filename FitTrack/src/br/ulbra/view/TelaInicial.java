@@ -145,7 +145,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_mnPerfilActionPerformed
 
     private void mnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUsuarioActionPerformed
-         new UsuarioView().setVisible(true);
+         new CadastroUsu().setVisible(true);
     }//GEN-LAST:event_mnUsuarioActionPerformed
 
     private void mnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSobreActionPerformed

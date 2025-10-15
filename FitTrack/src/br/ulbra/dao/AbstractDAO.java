@@ -1,4 +1,4 @@
-package br.ulbra.DAO;
+package br.ulbra.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

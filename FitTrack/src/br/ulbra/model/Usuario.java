@@ -1,10 +1,8 @@
 package br.ulbra.model;
 
 public class Usuario {
-
-    private int idUsuario;
+    private int id;
     private String nome;
-    private String email;
     private String senha;
     private int idade;
     private double peso;
@@ -13,79 +11,31 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nome, String email, String senha, int idade, double peso, double altura) {
-        this.idUsuario = idUsuario;
+    public Usuario(int id, String nome, String senha, int idade, double peso, double altura) {
+        this.id = id;
         this.nome = nome;
-        this.email = email;
         this.senha = senha;
         this.idade = idade;
         this.peso = peso;
         this.altura = altura;
     }
 
-    // Getters e Setters
-    public int getIdUsuario() {
-        return idUsuario;
-    }
+    // getters e setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public int getIdade() { return idade; }
+    public void setIdade(int idade) { this.idade = idade; }
 
-    public String getEmail() {
-        return email;
-    }
+    public double getPeso() { return peso; }
+    public void setPeso(double peso) { this.peso = peso; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-    public double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    // Método auxiliar (opcional): calcula o IMC
-    public double calcularIMC() {
-        if (altura > 0) {
-            return peso / (altura * altura);
-        } else {
-            return 0;
-        }
-    }
+    public double getAltura() { return altura; }
+    public void setAltura(double altura) { this.altura = altura; }
 }

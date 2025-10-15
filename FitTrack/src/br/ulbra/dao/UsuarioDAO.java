@@ -13,16 +13,15 @@ public class UsuarioDAO {
 
     // --- SALVAR USUÁRIO ---
     public void salvar(Usuario u) throws SQLException {
-        String sql = "INSERT INTO usuario (nome, email, senha, idade, peso, altura) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nome,idade, peso, senha, altura) VALUES (?, ?, ?, ?,?)";
         try (Connection con = AbstractDAO.getConnection();
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            ps.setString(1, u.getNome());
-            ps.setString(2, u.getEmail());
-            ps.setString(3, u.getSenha());
-            ps.setInt(4, u.getIdade());
-            ps.setDouble(5, u.getPeso());
-            ps.setDouble(6, u.getAltura());
+            ps.setString(1, u.getNome());    
+            ps.setInt(2, u.getIdade());
+            ps.setDouble(3, u.getPeso());
+            ps.setString(4, u.getSenha());
+            ps.setDouble(5, u.getAltura());
 
             int affected = ps.executeUpdate();
             if (affected == 0) {
@@ -31,7 +30,7 @@ public class UsuarioDAO {
 
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    u.setIdUsuario(rs.getInt(1));
+                    u.setId(rs.getInt(1));
                 }
             }
         }
@@ -49,7 +48,6 @@ public class UsuarioDAO {
                     return new Usuario(
                         rs.getInt("id_usuario"),
                         rs.getString("nome"),
-                        rs.getString("email"),
                         rs.getString("senha"),
                         rs.getInt("idade"),
                         rs.getDouble("peso"),
@@ -74,7 +72,6 @@ public class UsuarioDAO {
                 Usuario u = new Usuario(
                     rs.getInt("id_usuario"),
                     rs.getString("nome"),
-                    rs.getString("email"),
                     rs.getString("senha"),
                     rs.getInt("idade"),
                     rs.getDouble("peso"),
@@ -88,17 +85,16 @@ public class UsuarioDAO {
 
     // --- ATUALIZAR USUÁRIO ---
     public void atualizar(Usuario u) throws SQLException {
-        String sql = "UPDATE usuario SET nome = ?, email = ?, senha = ?, idade = ?, peso = ?, altura = ? WHERE id_usuario = ?";
+        String sql = "UPDATE usuario SET nome = ?,senha = ?, idade = ?, peso = ?, altura = ? WHERE id_usuario = ?";
         try (Connection con = AbstractDAO.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, u.getNome());
-            ps.setString(2, u.getEmail());
-            ps.setString(3, u.getSenha());
-            ps.setInt(4, u.getIdade());
-            ps.setDouble(5, u.getPeso());
-            ps.setDouble(6, u.getAltura());
-            ps.setInt(7, u.getIdUsuario());
+            ps.setString(2, u.getSenha());
+            ps.setInt(3, u.getIdade());
+            ps.setDouble(4, u.getPeso());
+            ps.setDouble(5, u.getAltura());
+            ps.setInt(6, u.getId());
 
             ps.executeUpdate();
         }
