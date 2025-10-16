@@ -155,6 +155,8 @@ public class CadastroUsu extends javax.swing.JFrame {
     UsuarioDAO dao = new UsuarioDAO();
     dao.salvar(u);
 
+    new TelaInicial(u).setVisible(true);
+    
     JOptionPane.showMessageDialog(this, "Usuário salvo com sucesso!");
 
     // limpa campos
@@ -169,7 +171,7 @@ public class CadastroUsu extends javax.swing.JFrame {
 } catch (Exception e) {
     JOptionPane.showMessageDialog(this, "Erro ao salvar usuário: " + e.getMessage());
     e.printStackTrace();
-     new TelaInicial().setVisible(true);
+ 
 }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

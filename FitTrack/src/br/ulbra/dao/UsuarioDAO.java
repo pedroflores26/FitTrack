@@ -37,27 +37,32 @@ public class UsuarioDAO {
     }
 
     // --- BUSCAR USUÁRIO POR ID ---
-    public Usuario buscarPorId(int id) throws SQLException {
-        String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
-        try (Connection con = AbstractDAO.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+ public Usuario buscarPorId(int id) {
+    String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+    Usuario u = null;
+    try (Connection con = AbstractDAO.getConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return new Usuario(
-                        rs.getInt("id_usuario"),
-                        rs.getString("nome"),
-                        rs.getString("senha"),
-                        rs.getInt("idade"),
-                        rs.getDouble("peso"),
-                        rs.getDouble("altura")
-                    );
-                }
+        ps.setInt(1, id);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                u = new Usuario(
+                    rs.getInt("id_usuario"),
+                    rs.getString("nome"),
+                    rs.getString("senha"),
+                    rs.getInt("idade"),
+                    rs.getDouble("peso"),
+                    rs.getDouble("altura")
+                );
             }
         }
-        return null;
+
+    } catch (SQLException e) {
+        e.printStackTrace(); // ou log
     }
+    return u;
+}
+
 
     // --- LISTAR TODOS OS USUÁRIOS ---
     public List<Usuario> listar() throws SQLException {
@@ -110,4 +115,23 @@ public class UsuarioDAO {
             ps.executeUpdate();
         }
     }
+    
+    public Usuario buscarPorNome(String nome) throws SQLException {
+    Connection con = AbstractDAO.getConnection();
+    String sql = "SELECT * FROM usuario WHERE nome = ?";
+    PreparedStatement ps = con.prepareStatement(sql);
+    ps.setString(1, nome);
+    ResultSet rs = ps.executeQuery();
+
+    if (rs.next()) {
+        Usuario u = new Usuario();
+        u.setIdade(rs.getInt("idade"));
+        u.setPeso(rs.getDouble("peso"));
+        u.setAltura(rs.getDouble("altura"));
+        u.setNome(rs.getString("nome"));
+        u.setSenha(rs.getString("senha"));
+        return u;
+    }
+    return null; // se não encontrou
+}
 }
