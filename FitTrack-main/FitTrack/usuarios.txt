@@ -1,0 +1,5 @@
+Nome: ad
+Idade: d
+Peso: f
+Altura: g
+-------------------------
